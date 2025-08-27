@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   description: "เรียนฟิสิกส์กับครูพี่เต้ย ผู้เชี่ยวชาญด้านฟิสิกส์ที่มีประสบการณ์การสอนมากมาย พร้อมเทคนิคการสอนที่เข้าใจง่าย",
   keywords: "ฟิสิกส์, กวดวิชา, ครูพี่เต้ย, เรียนฟิสิกส์, GAT, PAT, ฟิสิกส์ม.ปลาย",
   generator: "physics-ptoey.app",
+  icons: {
+    icon: "/new-logo.png",
+  },
 }
 
 export default function RootLayout({
