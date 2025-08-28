@@ -13,27 +13,51 @@ import Image from "next/image"
 const teachingEnvironmentImages = [
   {
     id: 1,
-    src: "/physics-classroom-with-students-studying.png",
+    src: "/view1.jpeg",
     alt: "บรรยากาศการเรียนในห้องเรียน",
-    title: "ห้องเรียนที่ทันสมัย",
+    title: "บรรยากาศการเรียนในห้องเรียน",
   },
   {
     id: 2,
-    src: "/physics-laboratory-equipment-and-experiments.png",
-    alt: "ห้องปฏิบัติการฟิสิกส์",
-    title: "ห้องปฏิบัติการครบครัน",
+    src: "/view2.jpeg",
+    alt: "บรรยากาศการเรียนในห้องเรียน",
+    title: "บรรยากาศการเรียนในห้องเรียน",
   },
   {
     id: 3,
-    src: "/physics-teacher-explaining-concepts-on-whiteboard.png",
-    alt: "การสอนที่เข้าใจง่าย",
-    title: "การสอนที่เข้าใจง่าย",
+    src: "/view3.jpeg",
+    alt: "บรรยากาศการเรียนในห้องเรียน",
+    title: "บรรยากาศการเรียนในห้องเรียน",
   },
   {
     id: 4,
-    src: "/student-success-certificate-physics-competition.png",
-    alt: "นักเรียนที่ประสบความสำเร็จ",
-    title: "นักเรียนที่ประสบความสำเร็จ",
+    src: "/view4.jpeg",
+    alt: "บรรยากาศการเรียนในห้องเรียน",
+    title: "บรรยากาศการเรียนในห้องเรียน",
+  },
+  {
+    id: 5,
+    src: "/view5.jpeg",
+    alt: "บรรยากาศการเรียนในห้องเรียน",
+    title: "บรรยากาศการเรียนในห้องเรียน",
+  },
+  {
+    id: 6,
+    src: "/view6.jpeg",
+    alt: "บรรยากาศการเรียนในห้องเรียน",
+    title: "บรรยากาศการเรียนในห้องเรียน",
+  },
+  {
+    id: 7,
+    src: "/view7.jpeg",
+    alt: "บรรยากาศการเรียนในห้องเรียน",
+    title: "บรรยากาศการเรียนในห้องเรียน",
+  },
+  {
+    id: 8,
+    src: "/view8.jpeg",
+    alt: "บรรยากาศการเรียนในห้องเรียน",
+    title: "บรรยากาศการเรียนในห้องเรียน",
   },
 ]
 
@@ -69,7 +93,7 @@ export default function AboutPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="pt-24 pb-16 px-4"
+          className="pt-24 px-4"
         >
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
@@ -85,15 +109,15 @@ export default function AboutPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="py-16 px-4"
+          className="py-5 px-4"
         >
           <div className="max-w-7xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               {/* Teacher Image */}
               <div className="relative">
-                <div className="relative w-full h-96 rounded-2xl overflow-hidden shadow-2xl">
+                <div className="relative w-full h-190 rounded-2xl overflow-hidden shadow-2xl">
                   <Image
-                    src="/professional-physics-teacher-portrait.png"
+                    src="/teacher(1).png"
                     alt="อาจารย์เต้ย (อ.เชษฐา)"
                     fill
                     className="object-cover"

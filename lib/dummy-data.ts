@@ -151,42 +151,41 @@ export const books = [
 export const articles = [
   {
     id: 1,
-    title: "เทคนิคการแก้โจทย์ฟิสิกส์ให้ได้คะแนนเต็ม",
-    image: "/physics-problem-solving-techniques-study.png",
-    excerpt: "วิธีการแก้โจทย์ฟิสิกส์อย่างเป็นระบบ ที่จะช่วยให้คุณได้คะแนนเต็ม",
+    slug: "physics-problem-solving",
+    title: "Dek68 ห้ามพลาดเก็บฟิสิกส์ตามนี้",
+    image: "/articles1.png",
+    excerpt: "การเก็บเนื้อหาเป็นสิ่งสำคัญที่น้องๆ ทุกคนมีความกังวลใจโดยเฉพาะวิชาฟิสิกส์ที่หลายคน",
     date: "2024-01-15",
-    readTime: "5 นาที",
   },
   {
     id: 2,
-    title: "การเตรียมตัวสอบ GAT ฟิสิกส์",
-    image: "/gat-physics-exam-preparation-study-guide.png",
-    excerpt: "แนวทางการเตรียมตัวสอบ GAT ฟิสิกส์ให้ได้คะแนนสูง",
+    slug: "gat-physics-exam-prep",
+    title: "สอวน.ฟิสิกส์",
+    image: "/articles2.png",
+    excerpt: "สอวน. คือ การสอบแข่งขันที่ไม่ได้อยู่ในหลักสูตรตามปกติทั่วไป แต่เป็นส่วนเสริมที่เป็นส่วนสำคัญในการต่อยอดทางวิชาการ",
     date: "2024-01-10",
-    readTime: "7 นาที",
   },
   {
     id: 3,
-    title: "ฟิสิกส์ในชีวิตประจำวัน",
-    image: "/placeholder.svg?height=200&width=300",
-    excerpt: "ตัวอย่างการใช้หลักฟิสิกส์ในชีวิตประจำวันที่คุณอาจไม่เคยสังเกต",
+    slug: "physics-in-daily-life",
+    title: "รวมพื้นฐานที่ต้องรู้ก่อนใคร ถ้าอยากเก่งฟิสิกส์",
+    image: "/articles3.png",
+    excerpt: "สวัสดีครับน้อง ๆ วันนี้พี่เต้ยมาเน้นเเละเเนะนำน้องๆ ว่าปรับพื้นฐานฟิสิกส์อย่างไรให้สอบติด เพื่อให้น้องเรียนอย่างตรงจุดมากยิ่งขึ้น",
     date: "2024-01-05",
-    readTime: "4 นาที",
   },
 ]
-
 export const teachingVideos = [
   {
     id: 1,
     title: "การเคลื่อนที่แบบตรง",
-    youtubeId: "dQw4w9WgXcQ", // Replace with actual YouTube video ID
+    youtubeId: "09W1t7nVOm4", // Replace with actual YouTube video ID
     thumbnail: "/placeholder.svg?height=200&width=350",
     description: "เรียนรู้เรื่องการเคลื่อนที่แบบตรงอย่างละเอียด",
   },
   {
     id: 2,
     title: "แรงและการเคลื่อนที่",
-    youtubeId: "dQw4w9WgXcQ", // Replace with actual YouTube video ID
+    youtubeId: "GjZZf6UtVjc", // Replace with actual YouTube video ID
     thumbnail: "/placeholder.svg?height=200&width=350",
     description: "ทำความเข้าใจเรื่องแรงและการเคลื่อนที่",
   },

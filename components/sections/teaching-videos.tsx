@@ -1,15 +1,102 @@
 "use client"
 
+import { useEffect, useState, useCallback } from "react"
 import Image from "next/image"
-import { Play, Youtube } from "lucide-react"
+import { Play, Youtube, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { teachingVideos } from "@/lib/dummy-data"
 
+type Video = (typeof teachingVideos)[number]
+
+function VideoModal({
+  isOpen,
+  youtubeId,
+  title,
+  onClose,
+}: {
+  isOpen: boolean
+  youtubeId: string | null
+  title?: string
+  onClose: () => void
+}) {
+  // ปิดสกอร์ลหน้าเมื่อเปิดโมดัล
+  useEffect(() => {
+    if (!isOpen) return
+    const prev = document.body.style.overflow
+    document.body.style.overflow = "hidden"
+    return () => {
+      document.body.style.overflow = prev
+    }
+  }, [isOpen])
+
+  // ปิดด้วย Esc
+  useEffect(() => {
+    if (!isOpen) return
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose()
+    window.addEventListener("keydown", onKey)
+    return () => window.removeEventListener("keydown", onKey)
+  }, [isOpen, onClose])
+
+  if (!isOpen || !youtubeId) return null
+
+  // ใช้ youtube-nocookie + autoplay ลดการติดคุกกี้/แนะนำวิดีโออื่น
+  const src = `https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&rel=0&modestbranding=1`
+
+  return (
+    <div
+      className="fixed inset-0 z-[100] bg-black/70 backdrop-blur-sm flex items-center justify-center p-4"
+      aria-modal="true"
+      role="dialog"
+      onClick={onClose}
+    >
+      <div
+        className="relative w-full max-w-4xl rounded-2xl overflow-hidden shadow-2xl bg-black"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Close */}
+        <button
+          onClick={onClose}
+          aria-label="Close video"
+          className="absolute top-3 right-3 inline-flex items-center justify-center rounded-full p-2 bg-white/90 hover:bg-white transition"
+        >
+          <X className="w-5 h-5 text-gray-900" />
+        </button>
+
+        {/* Player */}
+        <div className="aspect-video w-full">
+          <iframe
+            title={title ?? "YouTube video"}
+            src={src}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+            className="w-full h-full"
+          />
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function TeachingVideos() {
+  const [open, setOpen] = useState(false)
+  const [active, setActive] = useState<Video | null>(null)
+
+  const openVideo = useCallback((video: Video) => {
+    setActive(video)
+    setOpen(true)
+  }, [])
+
+  const closeVideo = useCallback(() => {
+    setOpen(false)
+    // ดีเลย์นิดหน่อยเพื่อให้อนิเมชัน/เฟด (ถ้ามี) ก่อนล้าง state
+    setTimeout(() => setActive(null), 150)
+  }, [])
+
   const handleVideoClick = (youtubeId: string) => {
-    // Open YouTube video in new tab
-    window.open(`https://www.youtube.com/watch?v=${youtubeId}`, "_blank")
+    // เดิม: window.open …  -> เปลี่ยนเป็นเปิดในเว็บ
+    const v = teachingVideos.find((t) => t.youtubeId === youtubeId)
+    if (v) openVideo(v)
   }
 
   return (
@@ -35,11 +122,12 @@ export default function TeachingVideos() {
                 {/* Video Thumbnail */}
                 <div className="aspect-video relative overflow-hidden">
                   <Image
-                    src={video.thumbnail || "/placeholder.svg?height=200&width=350"}
+                    src={`https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`}
                     alt={video.title}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                   />
+
                   {/* Play Button Overlay */}
                   <div className="absolute inset-0 bg-black/30 flex items-center justify-center group-hover:bg-black/40 transition-colors duration-300">
                     <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
@@ -66,19 +154,27 @@ export default function TeachingVideos() {
         </div>
 
         {/* Call to Action */}
-        <div className="text-center bg-gradient-to-r from-yellow-50 to-yellow-100 rounded-2xl p-8">
+        <div className="text-center ">
           <h3 className="text-2xl font-bold text-gray-900 mb-4">ต้องการดูวิดีโอเพิ่มเติม?</h3>
-          <p className="text-gray-600 mb-6 max-w-md mx-auto">ติดตาม YouTube Channel ของเราเพื่อดูวิดีโอการสอนฟิสิกส์เพิ่มเติม</p>
+          <p className="text-gray-600 mb-6 max-w-md mx-auto whitespace-nowrap">ติดตาม YouTube Channel ของพี่เต้ยเพื่อดูวิดีโอการสอนฟิสิกส์เพิ่มเติม</p>
           <Button
             size="lg"
-            className="bg-red-600 hover:bg-red-700 text-white"
+            className="bg-red-600 hover:bg-red-700 text-white transform transition-transform duration-200 hover:scale-110 cursor-pointer"
             onClick={() => window.open("https://youtube.com/@physicsptoey", "_blank")}
           >
-            <Youtube className="w-5 h-5 mr-2" />
+            <Youtube className="w-5 h-5 size-5 mr-2 " />
             ติดตาม YouTube
           </Button>
         </div>
       </div>
+
+      {/* Modal Player */}
+      <VideoModal
+        isOpen={open}
+        youtubeId={active?.youtubeId ?? null}
+        title={active?.title}
+        onClose={closeVideo}
+      />
     </section>
   )
 }

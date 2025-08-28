@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 import { Calendar, Clock, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -24,16 +25,18 @@ export default function Articles() {
               className="group hover:shadow-xl transition-all duration-300 overflow-hidden bg-white"
             >
               <CardContent className="p-0">
-                {/* Article Image */}
-                <div className="aspect-[16/10] relative overflow-hidden">
-                  <Image
-                    src={article.image || "/placeholder.svg"}
-                    alt={article.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-                </div>
+                {/* Article Image (คลิกได้) */}
+                <Link href={`/articles/${article.slug}`}>
+                  <div className="aspect-[16/10] relative overflow-hidden cursor-pointer">
+                    <Image
+                      src={article.image || "/placeholder.svg"}
+                      alt={article.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                  </div>
+                </Link>
 
                 {/* Article Info */}
                 <div className="p-6">
@@ -47,24 +50,24 @@ export default function Articles() {
                         day: "numeric",
                       })}
                     </div>
-                    <div className="flex items-center">
-                      <Clock className="w-4 h-4 mr-1" />
-                      {article.readTime}
-                    </div>
                   </div>
 
-                  {/* Title */}
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3 text-balance group-hover:text-yellow-600 transition-colors duration-200">
-                    {article.title}
-                  </h3>
+                  {/* Title (คลิกได้) */}
+                  <Link href={`/articles/${article.slug}`}>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-3 text-balance group-hover:text-yellow-600 transition-colors duration-200 cursor-pointer">
+                      {article.title}
+                    </h3>
+                  </Link>
 
                   {/* Excerpt */}
                   <p className="text-gray-600 mb-6 text-pretty leading-relaxed">{article.excerpt}</p>
 
                   {/* Read More Button */}
-                  <Button variant="ghost" className="group/btn p-0 h-auto text-yellow-600 hover:text-yellow-700">
-                    อ่านต่อ
-                    <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform duration-200" />
+                  <Button asChild variant="ghost" className="group/btn p-0 h-auto text-yellow-600 hover:text-yellow-700">
+                    <Link href={`/articles/${article.slug}`}>
+                      อ่านต่อ
+                      <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform duration-200" />
+                    </Link>
                   </Button>
                 </div>
               </CardContent>
@@ -79,14 +82,16 @@ export default function Articles() {
             variant="outline"
             className="border-yellow-400 text-yellow-600 hover:bg-yellow-50 bg-transparent"
           >
-            ดูบทความเพิ่มเติม
+            <Link href="/articles">ดูบทความเพิ่มเติม</Link>
           </Button>
         </div>
 
         {/* Newsletter Signup */}
         <div className="mt-16 bg-gradient-to-r from-yellow-50 to-yellow-100 rounded-2xl p-8 text-center">
           <h3 className="text-2xl font-bold text-gray-900 mb-4">ติดตามบทความใหม่ๆ</h3>
-          <p className="text-gray-600 mb-6 max-w-md mx-auto">รับบทความและเทคนิคการเรียนฟิสิกส์ใหม่ๆ ส่งตรงถึงอีเมลของคุณ</p>
+          <p className="text-gray-600 mb-6 max-w-md mx-auto">
+            รับบทความและเทคนิคการเรียนฟิสิกส์ใหม่ๆ ส่งตรงถึงอีเมลของคุณ
+          </p>
           <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
             <input
               type="email"
