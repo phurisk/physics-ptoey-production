@@ -69,7 +69,7 @@ export function Navigation() {
 
               <Button
                 onClick={handleLoginClick}
-                className="ml-5 px-4 py-6 bg-[linear-gradient(180deg,#020024,#4eb5ed_0%,#01579b)] hover:bg-[linear-gradient(180deg,#01579b,#00acc1)] text-white rounded-lg text-base font-bold transition-colors duration-200 cursor-pointer"
+                className="ml-5 px-4 py-6 bg-[linear-gradient(180deg,#4eb5ed_0%,#01579b)] hover:bg-[linear-gradient(180deg,#01579b,#00acc1)] text-white rounded-lg text-base font-bold transition-colors duration-200 cursor-pointer"
               >
                 สมัครเรียนออนไลน์
               </Button>
