@@ -9,7 +9,7 @@ import { bannerSlides } from "@/lib/dummy-data"
 export default function HeroBanner() {
   const [currentSlide, setCurrentSlide] = useState(0)
 
-  // Auto-slide functionality
+
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % bannerSlides.length)
@@ -27,7 +27,7 @@ export default function HeroBanner() {
 
   return (
     <section className="relative w-full aspect-[3840/1799] overflow-hidden">
-      {/* Slides */}
+    
       <div className="relative w-full h-full">
         {bannerSlides.map((slide, index) => (
           <div
@@ -49,7 +49,7 @@ export default function HeroBanner() {
         ))}
       </div>
 
-      {/* Navigation Arrows */}
+   
       <Button
         variant="ghost"
         size="sm"
@@ -67,7 +67,7 @@ export default function HeroBanner() {
         <ChevronRight className="h-6 w-6" />
       </Button>
 
-      {/* Dots Indicator */}
+     
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
         {bannerSlides.map((_, index) => (
           <button

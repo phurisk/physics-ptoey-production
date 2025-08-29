@@ -9,7 +9,7 @@ export default function Articles() {
   return (
     <section className="py-16 lg:py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
-        {/* Section Header */}
+      
         <div className="text-center mb-12">
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4 text-balance">บทความเพื่อน้องๆ</h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto text-pretty">
@@ -17,7 +17,7 @@ export default function Articles() {
           </p>
         </div>
 
-        {/* Articles Grid */}
+      
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8  ">
           {articles.map((article) => (
             <Card
@@ -25,7 +25,7 @@ export default function Articles() {
               className="group hover:shadow-xl transition-all duration-300 overflow-hidden bg-white pt-0"
             >
               <CardContent className="p-0">
-                {/* Article Image (คลิกได้) */}
+             
                 <Link href={`/articles/${article.slug}`}>
                   <div className="aspect-[16/7.5] relative overflow-hidden cursor-pointer">
                     <Image
@@ -38,9 +38,9 @@ export default function Articles() {
                   </div>
                 </Link>
 
-                {/* Article Info */}
+              
                 <div className="p-6">
-                  {/* Meta Info */}
+              
                   <div className="flex items-center text-sm text-gray-500 mb-3 space-x-4">
                     <div className="flex items-center">
                       <Calendar className="w-4 h-4 mr-1" />
@@ -52,17 +52,17 @@ export default function Articles() {
                     </div>
                   </div>
 
-                  {/* Title (คลิกได้) */}
+              
                   <Link href={`/articles/${article.slug}`}>
                     <h3 className="text-xl font-semibold text-gray-900 mb-3 text-balance group-hover:text-yellow-600 transition-colors duration-200 cursor-pointer">
                       {article.title}
                     </h3>
                   </Link>
 
-                  {/* Excerpt */}
+               
                   <p className="text-gray-600 mb-6 text-pretty leading-relaxed">{article.excerpt}</p>
 
-                  {/* Read More Button */}
+               
                   <Button asChild variant="ghost" className="group/btn p-0 h-auto text-yellow-600 hover:text-yellow-700">
                     <Link href={`/articles/${article.slug}`}>
                       อ่านต่อ
@@ -75,7 +75,7 @@ export default function Articles() {
           ))}
         </div>
 
-        {/* Load More Button */}
+     
         <div className="text-center mt-12">
           <Button
             size="lg"
@@ -86,7 +86,7 @@ export default function Articles() {
           </Button>
         </div>
 
-        {/* Newsletter Signup */}
+     
         <div className="mt-16 bg-gradient-to-r from-yellow-50 to-yellow-100 rounded-2xl p-8 text-center">
           <h3 className="text-2xl font-bold text-gray-900 mb-4">ติดตามบทความใหม่ๆ</h3>
           <p className="text-gray-600 mb-6 max-w-md mx-auto">

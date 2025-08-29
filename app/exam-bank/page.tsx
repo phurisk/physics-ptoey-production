@@ -12,6 +12,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { examCategories, examBank } from "@/lib/dummy-data"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/sections/footer"
+import Link from "next/link"
 
 export default function ExamBankPage() {
   const [selectedCategory, setSelectedCategory] = useState("all")
@@ -19,7 +20,7 @@ export default function ExamBankPage() {
   const [searchTerm, setSearchTerm] = useState("")
   const [selectedExam, setSelectedExam] = useState<any>(null)
 
-  // Get unique years from exam data
+
   const availableYears = [...new Set(examBank.map((exam) => exam.year))].sort((a, b) => b - a)
 
   const filteredExams = examBank.filter((exam) => {
@@ -46,11 +47,11 @@ export default function ExamBankPage() {
 
   return (
     <>
-      {/* Navigation Component */}
+
       <Navigation />
       <div className="min-h-screen bg-gradient-to-br from-white to-yellow-50 pt-20">
         <div className="container mx-auto px-4 py-8">
-          {/* Header */}
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -63,7 +64,7 @@ export default function ExamBankPage() {
             </p>
           </motion.div>
 
-          {/* Search and Filters */}
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -98,7 +99,7 @@ export default function ExamBankPage() {
             </div>
           </motion.div>
 
-          {/* Category Filters */}
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -111,9 +112,8 @@ export default function ExamBankPage() {
                   key={category.id}
                   variant={selectedCategory === category.id ? "default" : "outline"}
                   onClick={() => setSelectedCategory(category.id)}
-                  className={`px-6 py-2 rounded-full transition-all duration-300 ${
-                    selectedCategory === category.id ? "text-white shadow-lg transform scale-105" : "hover:scale-105"
-                  }`}
+                  className={`px-6 py-2 rounded-full transition-all duration-300 ${selectedCategory === category.id ? "text-white shadow-lg transform scale-105" : "hover:scale-105"
+                    }`}
                   style={{
                     backgroundColor: selectedCategory === category.id ? category.color : "transparent",
                     borderColor: category.color,
@@ -126,7 +126,7 @@ export default function ExamBankPage() {
             </div>
           </motion.div>
 
-          {/* Results Count */}
+
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -136,7 +136,7 @@ export default function ExamBankPage() {
             <p className="text-gray-600">พบข้อสอบ {filteredExams.length} รายการ</p>
           </motion.div>
 
-          {/* Exam Grid */}
+
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -244,7 +244,7 @@ export default function ExamBankPage() {
             </DialogContent>
           </Dialog>
 
-          {/* No Results */}
+
           {filteredExams.length === 0 && (
             <motion.div
               initial={{ opacity: 0 }}
@@ -258,7 +258,7 @@ export default function ExamBankPage() {
             </motion.div>
           )}
 
-          {/* Call to Action */}
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -269,9 +269,7 @@ export default function ExamBankPage() {
             <p className="text-gray-700 mb-6 max-w-2xl mx-auto">
               สมัครเรียนกับเราเพื่อเข้าถึงข้อสอบและเนื้อหาเพิ่มเติม พร้อมคำอธิบายและเทคนิคการแก้โจทย์จากอาจารย์เต้ย
             </p>
-            <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-3 rounded-full">
-              สมัครเรียนออนไลน์
-            </Button>
+            <Link href="/courses"><Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-3 rounded-full cursor-pointer">สมัครเรียนออนไลน์</Button></Link>
           </motion.div>
         </div>
       </div>

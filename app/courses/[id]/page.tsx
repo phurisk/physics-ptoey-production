@@ -27,9 +27,7 @@ export default function CourseDetailPage({ params }: { params: { id: string } })
     <div className="min-h-screen bg-gray-50 pt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid lg:grid-cols-3 gap-12">
-          {/* Main Content */}
           <div className="lg:col-span-2 space-y-8">
-            {/* Course Header */}
             <motion.div variants={fadeInUp} initial="initial" animate="animate">
               <div className="aspect-video relative overflow-hidden rounded-xl shadow-lg mb-6">
                 <Image
@@ -55,7 +53,7 @@ export default function CourseDetailPage({ params }: { params: { id: string } })
 
               <p className="text-xl text-gray-600 mb-6 text-pretty">{course.description}</p>
 
-              {/* Course Stats */}
+
               <div className="flex flex-wrap items-center gap-6 text-gray-600">
                 <div className="flex items-center gap-2">
                   <Users className="h-5 w-5" />
@@ -75,9 +73,8 @@ export default function CourseDetailPage({ params }: { params: { id: string } })
                       {[...Array(5)].map((_, i) => (
                         <Star
                           key={i}
-                          className={`h-4 w-4 ${
-                            i < Math.floor(course.rating) ? "text-yellow-400 fill-current" : "text-gray-300"
-                          }`}
+                          className={`h-4 w-4 ${i < Math.floor(course.rating) ? "text-yellow-400 fill-current" : "text-gray-300"
+                            }`}
                         />
                       ))}
                     </div>
@@ -89,7 +86,7 @@ export default function CourseDetailPage({ params }: { params: { id: string } })
               </div>
             </motion.div>
 
-            {/* What You Will Learn */}
+
             <motion.div variants={fadeInUp} initial="initial" animate="animate" transition={{ delay: 0.2 }}>
               <Card>
                 <CardHeader>
@@ -108,7 +105,7 @@ export default function CourseDetailPage({ params }: { params: { id: string } })
               </Card>
             </motion.div>
 
-            {/* Prerequisites */}
+
             <motion.div variants={fadeInUp} initial="initial" animate="animate" transition={{ delay: 0.3 }}>
               <Card>
                 <CardHeader>
@@ -127,7 +124,7 @@ export default function CourseDetailPage({ params }: { params: { id: string } })
               </Card>
             </motion.div>
 
-            {/* Course Overview */}
+
             <motion.div variants={fadeInUp} initial="initial" animate="animate" transition={{ delay: 0.4 }}>
               <Card>
                 <CardHeader>
@@ -139,7 +136,7 @@ export default function CourseDetailPage({ params }: { params: { id: string } })
               </Card>
             </motion.div>
 
-            {/* Course Rating */}
+
             {course.rating > 0 && (
               <motion.div variants={fadeInUp} initial="initial" animate="animate" transition={{ delay: 0.5 }}>
                 <Card>
@@ -153,9 +150,8 @@ export default function CourseDetailPage({ params }: { params: { id: string } })
                         {[...Array(5)].map((_, i) => (
                           <Star
                             key={i}
-                            className={`h-6 w-6 ${
-                              i < Math.floor(course.rating) ? "text-yellow-400 fill-current" : "text-gray-300"
-                            }`}
+                            className={`h-6 w-6 ${i < Math.floor(course.rating) ? "text-yellow-400 fill-current" : "text-gray-300"
+                              }`}
                           />
                         ))}
                       </div>
@@ -166,7 +162,7 @@ export default function CourseDetailPage({ params }: { params: { id: string } })
             )}
           </div>
 
-          {/* Sidebar */}
+
           <div className="lg:col-span-1">
             <motion.div
               className="sticky top-24"
@@ -177,7 +173,7 @@ export default function CourseDetailPage({ params }: { params: { id: string } })
             >
               <Card className="shadow-lg">
                 <CardContent className="p-6">
-                  {/* Price */}
+
                   <div className="text-center mb-6">
                     <div className="flex items-center justify-center gap-2 mb-2">
                       <span className="text-3xl font-bold text-yellow-600">
@@ -198,7 +194,7 @@ export default function CourseDetailPage({ params }: { params: { id: string } })
 
                   <Separator className="mb-6" />
 
-                  {/* Course Details */}
+
                   <div className="space-y-4 mb-6">
                     <div className="flex justify-between">
                       <span className="text-gray-600">ระดับ:</span>
@@ -218,7 +214,7 @@ export default function CourseDetailPage({ params }: { params: { id: string } })
                     </div>
                   </div>
 
-                  {/* Action Buttons */}
+
                   <div className="space-y-3">
                     <Button className="w-full bg-yellow-400 hover:bg-yellow-500 text-white text-lg py-3">
                       สมัครเรียนเลย
@@ -230,7 +226,7 @@ export default function CourseDetailPage({ params }: { params: { id: string } })
 
                   <Separator className="my-6" />
 
-                  {/* Guarantee */}
+
                   <div className="text-center text-sm text-gray-600">
                     <p>รับประกันความพึงพอใจ 30 วัน</p>
                     <p>หรือคืนเงิน 100%</p>

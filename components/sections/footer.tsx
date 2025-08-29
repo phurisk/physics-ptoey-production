@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Mail, MapPin, Clock, Facebook, Instagram, MessageCircle } from "lucide-react"
+import { Mail, MapPin, Clock } from "lucide-react"
 import { SiFacebook, SiInstagram, SiTiktok, SiLine } from "react-icons/si"
 
 export function Footer() {

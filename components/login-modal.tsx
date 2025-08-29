@@ -59,7 +59,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
           </p>
         </DialogHeader>
 
-        {/* Benefits */}
+
         <div className="px-6">
           <ul className="mx-auto mt-3 grid grid-cols-1 gap-2 text-sm text-gray-600">
             <li className="flex items-center gap-2">
@@ -77,7 +77,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
           </ul>
         </div>
 
-        {/* Provider Buttons */}
+
         <div className="px-6 pt-5 pb-6 space-y-3">
           <Button
             onClick={handleLineLogin}
@@ -120,7 +120,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
             เข้าสู่ระบบด้วย Google
           </Button>
 
-          {/* Terms */}
+     
           <p className="pt-1 text-center text-xs text-gray-400">
             โดยการเข้าสู่ระบบ คุณยอมรับ{" "}
             <a href="/terms" className="underline underline-offset-2 hover:text-gray-600">
@@ -137,7 +137,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
   )
 }
 
-/* -------- Provider Icons -------- */
+
 function LineIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 36 36" aria-hidden="true" {...props}>

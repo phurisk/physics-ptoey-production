@@ -11,7 +11,7 @@ export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false)
-  const pathname = usePathname() // << เอา path ปัจจุบันมาเช็ค
+  const pathname = usePathname() 
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,7 +26,7 @@ export function Navigation() {
     setIsOpen(false)
   }
 
-  // เมนูทั้งหมด
+ 
   const menuItems = [
     { href: "/", label: "หน้าแรก" },
     { href: "/courses", label: "คอร์สเรียน" },
@@ -45,12 +45,12 @@ export function Navigation() {
       >
         <div className="mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16 lg:h-20">
-            {/* Logo */}
-            <Link href="/" className="flex items-center pl-10">
+      
+            <Link href="/" className="flex items-center pl-2">
               <img src="/new-logo.png" alt="Logo" className="h-16 lg:h-20" />
             </Link>
 
-            {/* Desktop Navigation */}
+      
             <div className="hidden lg:flex items-center space-x-1 pr-10">
               {menuItems.map((item) => (
                 <Link
@@ -75,16 +75,16 @@ export function Navigation() {
               </Button>
             </div>
 
-            {/* Mobile menu button */}
+         
             <Button variant="ghost" size="sm" className="lg:hidden" onClick={() => setIsOpen(!isOpen)}>
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
           </div>
 
-          {/* Mobile Navigation */}
+        
           {isOpen && (
             <div className="lg:hidden">
-              <div className="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-200">
+              <div className="px-2 pt-2 pb-3 space-y-3 bg-white border-t border-gray-200">
                 {menuItems.map((item) => (
                   <Link
                     key={item.href}
@@ -93,8 +93,8 @@ export function Navigation() {
                     className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200
                       ${
                         pathname === item.href
-                          ? "text-yellow-600 border-l-4 border-yellow-500 bg-yellow-50"
-                          : "text-gray-700 hover:text-yellow-600 hover:bg-yellow-50"
+                          ? "text-[#004B7D] border-l-4 border-[#004B7D] bg-[#004B7D1A]"
+                          : "text-gray-700 hover:text-[#004B7D] hover:bg-[#004B7D1A]"
                       }`}
                   >
                     {item.label}
@@ -103,7 +103,7 @@ export function Navigation() {
 
                 <Button
                   onClick={handleLoginClick}
-                  className="block w-full text-left px-3 py-2 rounded-md text-base font-medium bg-yellow-400 text-white"
+                  className="block w-full text-left px-3 py-0 rounded-md text-base font-medium bg-[linear-gradient(180deg,#4eb5ed_0%,#01579b)] text-white"
                 >
                   สมัครเรียนออนไลน์
                 </Button>

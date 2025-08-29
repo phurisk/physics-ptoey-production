@@ -1,4 +1,4 @@
-// app/articles/loading.tsx
+
 export default function LoadingArticles() {
     const skeletons = Array.from({ length: 9 })
   

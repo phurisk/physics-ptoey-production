@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { reviews } from "@/lib/dummy-data"
 
-// ==== Image Modal (เรียบง่าย) ====
+
 function ImageModal({
   isOpen,
   onClose,
@@ -50,9 +50,8 @@ function ImageModal({
 
 export default function Reviews() {
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [visible, setVisible] = useState(3) // desktop default
+  const [visible, setVisible] = useState(3) 
 
-    // === modal state เฉพาะรูป ===
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null)
   
@@ -67,7 +66,7 @@ export default function Reviews() {
       document.body.style.overflow = "auto"
     }
 
-  // อัปเดตจำนวนการ์ดต่อหน้า ตามขนาดจอ (เหมือนตัว StudentSuccess)
+
   useEffect(() => {
     const updateVisible = () => {
       const w = window.innerWidth
@@ -83,7 +82,7 @@ export default function Reviews() {
   const length = reviews.length
   const maxIndex = Math.max(0, length - visible)
 
-  // กันกรณีเปลี่ยน visible แล้ว index เกิน
+
   useEffect(() => {
     setCurrentIndex((prev) => Math.min(prev, maxIndex))
   }, [visible, maxIndex])
@@ -94,7 +93,6 @@ export default function Reviews() {
   return (
     <section className="py-16 lg:py-24 bg-gray-50">
       <div className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
         <div className="text-center mb-12">
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4 text-balance">
             รีวิวจากน้องๆ ทั่วประเทศ
@@ -104,7 +102,7 @@ export default function Reviews() {
           </p>
         </div>
 
-        {/* Carousel */}
+
         <div className="relative">
           <Button
             variant="outline"
@@ -134,7 +132,7 @@ export default function Reviews() {
                 <div key={review.id} className="w-full md:w-1/2 lg:w-1/4 flex-shrink-0 px-3">
                   <Card className="h-full border-none shadow-none">
                     <CardContent className="p-0">
-                      {/* ====== นำเฉพาะ "ส่วนรูป + hover + click เปิดโมดัล" มาใช้ ====== */}
+                
                       <div
                         className="aspect-square relative overflow-hidden rounded-lg group cursor-pointer"
                         onClick={() =>
@@ -147,7 +145,7 @@ export default function Reviews() {
                           fill
                           className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
                         />
-                        {/* overlay + icon */}
+                     
                         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
                           <div className="bg-background/80 rounded-full p-2 transform scale-75 group-hover:scale-100 transition-transform">
                             <svg
@@ -169,7 +167,7 @@ export default function Reviews() {
                           </div>
                         </div>
                       </div>
-                      {/* ====== /ส่วนรูป ====== */}
+                   
 
 
                     </CardContent>
@@ -198,7 +196,7 @@ export default function Reviews() {
 
         </div>
       </div>
-      {/* โมดัลรูปภาพ */}
+  
       <ImageModal isOpen={isModalOpen} onClose={closeModal} image={selectedImage} />
     </section>
   )

@@ -8,7 +8,7 @@ import { articles } from "@/lib/dummy-data"
 type Props = { params: { slug: string } }
 
 export function generateStaticParams() {
-  // ช่วยให้ build เป็น static ได้ ถ้าใช้ SSG
+ 
   return articles.map((a) => ({ slug: a.slug }))
 }
 
@@ -18,7 +18,6 @@ export default function ArticleDetail({ params }: Props) {
 
   return (
     <article className="max-w-3xl mx-auto py-12 px-4">
-      {/* Back Button */}
       <div className="mb-6">
         <Button asChild variant="outline" className="gap-2">
           <Link href="/articles" aria-label="กลับไปหน้าบทความทั้งหมด">

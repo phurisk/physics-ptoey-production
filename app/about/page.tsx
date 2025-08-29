@@ -88,15 +88,15 @@ export default function AboutPage() {
       <Navigation />
 
       <main className="min-h-screen bg-gradient-to-br from-yellow-50 to-white">
-        {/* Hero Section */}
+
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="pt-24 px-4"
+          className="pt-12 md:pt-24 px-4"
         >
           <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16">
+            <div className="text-center mb-4 lg:mb-16">
               <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-4">เกี่ยวกับเรา</h1>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">โรงเรียนกวดวิชาฟิสิกส์อาจารย์เต้ย</p>
               <p className="text-lg text-gray-500 mt-2">(ในความควบคุมของกระทรวงศึกษาธิการ)</p>
@@ -104,7 +104,7 @@ export default function AboutPage() {
           </div>
         </motion.section>
 
-        {/* Teacher Profile Section */}
+
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -113,22 +113,28 @@ export default function AboutPage() {
         >
           <div className="max-w-7xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
-              {/* Teacher Image */}
+
               <div className="relative">
-                <div className="relative w-full h-190 rounded-2xl overflow-hidden shadow-2xl">
+                <div className="relative max-w-[250px] mx-auto rounded-2xl overflow-hidden shadow-2xl md:max-w-none md:w-full md:h-190">
                   <Image
-                    src="/teacher(1).png"
+                    src="/profile_about.png"
                     alt="อาจารย์เต้ย (อ.เชษฐา)"
-                    fill
-                    className="object-cover"
+                    width={1200}
+                    height={1500}
+                    sizes="(min-width: 768px) 50vw, 100vw"
+                    className="w-full h-auto md:h-full md:object-cover"
+                    priority
                   />
                 </div>
-                <div className="absolute -bottom-6 -right-6 bg-yellow-400 text-white p-4 rounded-2xl shadow-lg">
-                  <Award className="h-8 w-8" />
+
+
+                <div className="absolute -bottom-4 right-12 md:-bottom-6 md:-right-6 bg-yellow-400 text-white p-3 md:p-4 rounded-2xl shadow-lg">
+                  <Award className="h-6 w-6 md:h-8 md:w-8" />
                 </div>
               </div>
 
-              {/* Teacher Info */}
+
+
               <div className="space-y-8">
                 <div>
                   <h2 className="text-3xl font-bold text-gray-900 mb-2">ฟิสิกส์ พี่เต้ย</h2>
@@ -184,7 +190,7 @@ export default function AboutPage() {
           </div>
         </motion.section>
 
-        {/* Teaching Environment Section */}
+
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -198,17 +204,17 @@ export default function AboutPage() {
             </div>
 
             <div className="relative">
-              <Card className="overflow-hidden shadow-2xl">
-                <CardContent className="p-0">
+              <Card className="overflow-hidden shadow-2xl p-0">
+                <CardContent className="p-0 ">
                   <div className="relative h-96 md:h-[500px]">
                     <Image
                       src={teachingEnvironmentImages[currentImageIndex].src || "/placeholder.svg"}
                       alt={teachingEnvironmentImages[currentImageIndex].alt}
                       fill
-                      className="object-cover transition-all duration-500"
+                      className="object-cover transition-all duration-500 "
                     />
 
-                    {/* Navigation Buttons */}
+
                     <Button
                       onClick={prevImage}
                       variant="outline"
@@ -227,7 +233,7 @@ export default function AboutPage() {
                       <ChevronRight className="h-4 w-4" />
                     </Button>
 
-                    {/* Image Title Overlay */}
+
                     <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
                       <h3 className="text-white text-xl font-semibold">
                         {teachingEnvironmentImages[currentImageIndex].title}
@@ -237,15 +243,14 @@ export default function AboutPage() {
                 </CardContent>
               </Card>
 
-              {/* Dots Indicator */}
+
               <div className="flex justify-center mt-6 gap-2">
                 {teachingEnvironmentImages.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentImageIndex(index)}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                      index === currentImageIndex ? "bg-yellow-400 scale-125" : "bg-gray-300 hover:bg-gray-400"
-                    }`}
+                    className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentImageIndex ? "bg-yellow-400 scale-125" : "bg-gray-300 hover:bg-gray-400"
+                      }`}
                   />
                 ))}
               </div>
@@ -253,7 +258,7 @@ export default function AboutPage() {
           </div>
         </motion.section>
 
-        {/* Stats Section */}
+
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

@@ -19,18 +19,18 @@ type Props = {
 }
 
 export default function ArticlesIndexPage({ searchParams }: Props) {
-  // แปลง page อย่างปลอดภัย (กัน NaN)
+
   const raw = searchParams?.page ?? "1"
   const page = Math.max(1, Number.isNaN(Number(raw)) ? 1 : Number(raw))
 
-  // เรียงใหม่ล่าสุดก่อน
+ 
   const sorted = [...articles].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   )
 
   const totalPages = Math.max(1, Math.ceil(sorted.length / PAGE_SIZE))
 
-  // ⛔ ถ้าขอหน้าเกินช่วง ให้ redirect ไปหน้าสุดท้าย (หรือจะเลือกไปหน้า 1 ก็ได้)
+ 
   if (page > totalPages) {
     redirect(`/articles?page=${totalPages}`)
   }
@@ -42,7 +42,7 @@ export default function ArticlesIndexPage({ searchParams }: Props) {
   return (
     <section className="py-16 lg:py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
+
         <div className="text-center mb-12">
           <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4 text-balance">
             บทความทั้งหมด
@@ -52,11 +52,11 @@ export default function ArticlesIndexPage({ searchParams }: Props) {
           </p>
         </div>
 
-        {/* Articles Grid */}
+
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {pageItems.map((article) => (
             <Card
-              key={`${article.id}-${article.slug ?? ""}`} // ช่วย transition เวลาเปลี่ยนหน้า
+              key={`${article.id}-${article.slug ?? ""}`} 
               className="group hover:shadow-xl transition-all duration-300 overflow-hidden bg-white"
             >
               <CardContent className="p-0">
@@ -106,9 +106,9 @@ export default function ArticlesIndexPage({ searchParams }: Props) {
           ))}
         </div>
 
-        {/* Pagination */}
+
         <div className="flex items-center justify-center gap-3 mt-12">
-          {/* ปุ่มก่อนหน้า: เมื่อ disabled ห้ามมี <Link> ครอบ เพื่อกันคลิกได้ */}
+
           {page <= 1 ? (
             <Button variant="outline" disabled>
               ← หน้าก่อนหน้า
@@ -123,7 +123,7 @@ export default function ArticlesIndexPage({ searchParams }: Props) {
             หน้า {page} / {totalPages}
           </span>
 
-          {/* ปุ่มถัดไป: เมื่อ disabled ห้ามมี <Link> ครอบ */}
+
           {page >= totalPages ? (
             <Button variant="outline" disabled>
               หน้าถัดไป →

@@ -37,7 +37,7 @@ export default function CoursesPage() {
       <Navigation />
       <div className="min-h-screen bg-gray-50 pt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          {/* Header */}
+         
           <motion.div
             className="text-center mb-12"
             initial={{ opacity: 0, y: 20 }}
@@ -50,7 +50,7 @@ export default function CoursesPage() {
             </p>
           </motion.div>
 
-          {/* Category Filter */}
+      
           <motion.div
             className="flex flex-wrap justify-center gap-4 mb-12"
             initial={{ opacity: 0, y: 20 }}
@@ -73,7 +73,7 @@ export default function CoursesPage() {
             ))}
           </motion.div>
 
-          {/* Courses Grid */}
+       
           <motion.div
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
             variants={staggerContainer}
@@ -84,7 +84,7 @@ export default function CoursesPage() {
               <motion.div key={course.id} variants={fadeInUp}>
                 <Card className="h-full hover:shadow-xl transition-shadow duration-300 group pt-0">
                   <CardContent className="p-0">
-                    {/* Course Image */}
+                
                     <div className="aspect-video relative overflow-hidden rounded-t-lg">
                       <Image
                         src={course.image || "/placeholder.svg?height=200&width=350"}
@@ -106,12 +106,12 @@ export default function CoursesPage() {
                       </div>
                     </div>
 
-                    {/* Course Content */}
+                 
                     <div className="p-6">
                       <h3 className="text-xl font-bold text-gray-900 mb-2 text-balance line-clamp-2">{course.title}</h3>
                       <p className="text-gray-600 mb-4 text-pretty line-clamp-2">{course.description}</p>
 
-                      {/* Course Stats */}
+                     
                       <div className="flex items-center gap-4 mb-4 text-sm text-gray-500">
                         <div className="flex items-center gap-1">
                           <Users className="h-4 w-4" />
@@ -127,7 +127,7 @@ export default function CoursesPage() {
                         </div>
                       </div>
 
-                      {/* Rating */}
+                 
                       {course.rating > 0 && (
                         <div className="flex items-center gap-2 mb-4">
                           <div className="flex items-center">
@@ -146,7 +146,7 @@ export default function CoursesPage() {
                         </div>
                       )}
 
-                      {/* Price */}
+               
                       <div className="flex items-center gap-2 mb-6">
                         <span className="text-2xl font-bold text-yellow-600">
                           ฿{course.discountPrice.toLocaleString()}
@@ -158,7 +158,7 @@ export default function CoursesPage() {
                         )}
                       </div>
 
-                      {/* Action Button */}
+                   
                       <Link href={`/courses/${course.id}`}>
                         <Button className="w-full bg-yellow-400 hover:bg-yellow-500 text-white">ดูรายละเอียด</Button>
                       </Link>
@@ -169,7 +169,7 @@ export default function CoursesPage() {
             ))}
           </motion.div>
 
-          {/* No courses found */}
+      
           {filteredCourses.length === 0 && (
             <motion.div
               className="text-center py-12"

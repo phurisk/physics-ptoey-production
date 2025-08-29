@@ -20,7 +20,7 @@ function VideoModal({
   title?: string
   onClose: () => void
 }) {
-  // ปิดสกอร์ลหน้าเมื่อเปิดโมดัล
+ 
   useEffect(() => {
     if (!isOpen) return
     const prev = document.body.style.overflow
@@ -30,7 +30,7 @@ function VideoModal({
     }
   }, [isOpen])
 
-  // ปิดด้วย Esc
+
   useEffect(() => {
     if (!isOpen) return
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose()
@@ -40,7 +40,7 @@ function VideoModal({
 
   if (!isOpen || !youtubeId) return null
 
-  // ใช้ youtube-nocookie + autoplay ลดการติดคุกกี้/แนะนำวิดีโออื่น
+ 
   const src = `https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&rel=0&modestbranding=1`
 
   return (
@@ -54,7 +54,7 @@ function VideoModal({
         className="relative w-full max-w-4xl rounded-2xl overflow-hidden shadow-2xl bg-black"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Close */}
+      
         <button
           onClick={onClose}
           aria-label="Close video"
@@ -63,7 +63,7 @@ function VideoModal({
           <X className="w-5 h-5 text-gray-900" />
         </button>
 
-        {/* Player */}
+      
         <div className="aspect-video w-full">
           <iframe
             title={title ?? "YouTube video"}
@@ -89,12 +89,12 @@ export default function TeachingVideos() {
 
   const closeVideo = useCallback(() => {
     setOpen(false)
-    // ดีเลย์นิดหน่อยเพื่อให้อนิเมชัน/เฟด (ถ้ามี) ก่อนล้าง state
+  
     setTimeout(() => setActive(null), 150)
   }, [])
 
   const handleVideoClick = (youtubeId: string) => {
-    // เดิม: window.open …  -> เปลี่ยนเป็นเปิดในเว็บ
+ 
     const v = teachingVideos.find((t) => t.youtubeId === youtubeId)
     if (v) openVideo(v)
   }
@@ -102,7 +102,7 @@ export default function TeachingVideos() {
   return (
     <section className="py-16 lg:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
+ 
         <div className="text-center mb-12">
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4 text-balance">ตัวอย่างการสอน</h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto text-pretty">
@@ -110,7 +110,7 @@ export default function TeachingVideos() {
           </p>
         </div>
 
-        {/* Videos Grid */}
+    
         <div className="grid md:grid-cols-2 gap-8 mb-12">
           {teachingVideos.map((video) => (
             <Card
@@ -119,7 +119,7 @@ export default function TeachingVideos() {
               onClick={() => handleVideoClick(video.youtubeId)}
             >
               <CardContent className="p-0">
-                {/* Video Thumbnail */}
+   
                 <div className="aspect-video relative overflow-hidden">
                   <Image
                     src={`https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`}
@@ -128,20 +128,20 @@ export default function TeachingVideos() {
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                   />
 
-                  {/* Play Button Overlay */}
+             
                   <div className="absolute inset-0 bg-black/30 flex items-center justify-center group-hover:bg-black/40 transition-colors duration-300">
                     <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                       <Play className="w-6 h-6 text-white ml-1" fill="currentColor" />
                     </div>
                   </div>
-                  {/* YouTube Badge */}
+                
                   <div className="absolute top-4 right-4 bg-red-600 text-white px-2 py-1 rounded text-sm font-medium flex items-center">
                     <Youtube className="w-4 h-4 mr-1" />
                     YouTube
                   </div>
                 </div>
 
-                {/* Video Info */}
+            
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-gray-900 mb-3 text-balance group-hover:text-yellow-600 transition-colors duration-200">
                     {video.title}
@@ -153,10 +153,10 @@ export default function TeachingVideos() {
           ))}
         </div>
 
-        {/* Call to Action */}
+    
         <div className="text-center ">
           <h3 className="text-2xl font-bold text-gray-900 mb-4">ต้องการดูวิดีโอเพิ่มเติม?</h3>
-          <p className="text-gray-600 mb-6 max-w-md mx-auto whitespace-nowrap">ติดตาม YouTube Channel ของพี่เต้ยเพื่อดูวิดีโอการสอนฟิสิกส์เพิ่มเติม</p>
+          <p className="text-gray-600 mb-6 max-w-md mx-auto ">ติดตาม YouTube Channel ของพี่เต้ยเพื่อดูวิดีโอการสอนฟิสิกส์เพิ่มเติม</p>
           <Button
             size="lg"
             className="bg-red-600 hover:bg-red-700 text-white transform transition-transform duration-200 hover:scale-110 cursor-pointer"
@@ -168,7 +168,7 @@ export default function TeachingVideos() {
         </div>
       </div>
 
-      {/* Modal Player */}
+    
       <VideoModal
         isOpen={open}
         youtubeId={active?.youtubeId ?? null}

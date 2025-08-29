@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { studentSuccesses } from "@/lib/dummy-data"
 
-// ==== Image Modal (เรียบง่าย) ====
+
 function ImageModal({
   isOpen,
   onClose,
@@ -50,9 +50,9 @@ function ImageModal({
 
 export default function StudentSuccess() {
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [visible, setVisible] = useState(3) // default desktop
+  const [visible, setVisible] = useState(3) 
 
-  // === modal state เฉพาะรูป ===
+ 
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null)
 
@@ -67,7 +67,7 @@ export default function StudentSuccess() {
     document.body.style.overflow = "auto"
   }
 
-  // อัปเดตจำนวนการ์ดต่อหน้า ตามขนาดจอ
+
   useEffect(() => {
     const updateVisible = () => {
       const w = window.innerWidth
@@ -93,7 +93,7 @@ export default function StudentSuccess() {
   return (
     <section className="py-16 lg:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
+       
         <div className="text-center mb-12">
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4 text-balance">
             ความสำเร็จลูกศิษย์พี่เต้ย (อ.เชษฐา)
@@ -103,7 +103,7 @@ export default function StudentSuccess() {
           </p>
         </div>
 
-        {/* Carousel */}
+       
         <div className="relative">
           <Button
             variant="outline"
@@ -133,7 +133,7 @@ export default function StudentSuccess() {
                 <div key={success.id} className="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-3 ">
                   <Card className="h-full border-none shadow-none">
                     <CardContent className="p-0">
-                      {/* ====== นำเฉพาะ "ส่วนรูป + hover + click เปิดโมดัล" มาใช้ ====== */}
+                      
                       <div
                         className="aspect-square relative overflow-hidden rounded-lg group cursor-pointer"
                         onClick={() =>
@@ -146,7 +146,7 @@ export default function StudentSuccess() {
                           fill
                           className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
                         />
-                        {/* overlay + icon */}
+                       
                         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
                           <div className="bg-background/80 rounded-full p-2 transform scale-75 group-hover:scale-100 transition-transform">
                             <svg
@@ -168,7 +168,7 @@ export default function StudentSuccess() {
                           </div>
                         </div>
                       </div>
-                      {/* ====== /ส่วนรูป ====== */}
+                   
 
 
                     </CardContent>
@@ -198,7 +198,7 @@ export default function StudentSuccess() {
         </div>
       </div>
 
-      {/* โมดัลรูปภาพ */}
+     
       <ImageModal isOpen={isModalOpen} onClose={closeModal} image={selectedImage} />
     </section>
   )
