@@ -8,7 +8,7 @@ import { articles } from "@/lib/dummy-data"
 export default function Articles() {
   return (
     <section className="py-16 lg:py-24 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
         {/* Section Header */}
         <div className="text-center mb-12">
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4 text-balance">บทความเพื่อน้องๆ</h2>
@@ -18,21 +18,21 @@ export default function Articles() {
         </div>
 
         {/* Articles Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8  ">
           {articles.map((article) => (
             <Card
               key={article.id}
-              className="group hover:shadow-xl transition-all duration-300 overflow-hidden bg-white"
+              className="group hover:shadow-xl transition-all duration-300 overflow-hidden bg-white pt-0"
             >
               <CardContent className="p-0">
                 {/* Article Image (คลิกได้) */}
                 <Link href={`/articles/${article.slug}`}>
-                  <div className="aspect-[16/10] relative overflow-hidden cursor-pointer">
+                  <div className="aspect-[16/7.5] relative overflow-hidden cursor-pointer">
                     <Image
                       src={article.image || "/placeholder.svg"}
                       alt={article.title}
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="object-contain  group-hover:scale-105 transition-transform duration-300"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                   </div>

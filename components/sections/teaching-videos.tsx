@@ -115,7 +115,7 @@ export default function TeachingVideos() {
           {teachingVideos.map((video) => (
             <Card
               key={video.id}
-              className="group hover:shadow-xl transition-all duration-300 overflow-hidden cursor-pointer"
+              className="group hover:shadow-xl transition-all duration-300 overflow-hidden cursor-pointer pt-0"
               onClick={() => handleVideoClick(video.youtubeId)}
             >
               <CardContent className="p-0">

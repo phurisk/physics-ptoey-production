@@ -82,7 +82,7 @@ export default function CoursesPage() {
           >
             {filteredCourses.map((course) => (
               <motion.div key={course.id} variants={fadeInUp}>
-                <Card className="h-full hover:shadow-xl transition-shadow duration-300 group">
+                <Card className="h-full hover:shadow-xl transition-shadow duration-300 group pt-0">
                   <CardContent className="p-0">
                     {/* Course Image */}
                     <div className="aspect-video relative overflow-hidden rounded-t-lg">
