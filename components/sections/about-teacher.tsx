@@ -1,6 +1,7 @@
 import Image from "next/image"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import Link from "next/link"
 
 export default function AboutTeacher() {
   const teacherInfo = {
@@ -90,12 +91,74 @@ export default function AboutTeacher() {
                   <p className="text-gray-600 text-pretty">
                     เรียนรู้เทคนิคการแก้โจทย์ฟิสิกส์ เพื่อให้เข้าใจและได้คะแนนสูง
                   </p>
-                  <button className="bg-yellow-400 hover:bg-yellow-500 text-white px-6 py-3 rounded-lg font-medium hover:font-bold transition-colors duration-200 cursor-pointer">
+                  <button className="bg-yellow-400 hover:bg-yellow-500 text-white px-6 py-3 rounded-xl font-semibold text-2xl shadow-md hover:shadow-lg transition-colors duration-300 cursor-pointer">
                     สมัครเรียนเลย
                   </button>
                 </div>
               </CardContent>
             </Card>
+
+
+            <div className="mt-6 flex flex-row gap-3 justify-center flex-nowrap">
+              <Link
+                href="/courses"
+                className="min-w-[160px] px-4 py-2 text-lg md:min-w-[250px] md:px-8 md:py-3 md:text-2xl
+               bg-[#2688DF] hover:bg-[#1f6fba] text-white rounded-sm font-semibold 
+               shadow-md hover:shadow-lg transition-transform duration-300 
+               cursor-pointer flex items-center justify-center gap-2 hover:scale-105"
+              >
+                คอร์สออนไลน์
+                <svg
+                  viewBox="0 0 32 32"
+                  aria-hidden="true"
+                  className="w-5 h-5 md:w-7 md:h-7"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill="none"
+                    stroke="white"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeMiterlimit="10"
+                    d="M26 22H6c-2.2 0-4-1.8-4-4V8c0-2.2 1.8-4 4-4h20c2.2 0 4 1.8 4 4v10c0 2.2-1.8 4-4 4M3 27h4m4 0h18"
+                  />
+                  <circle cx="9" cy="27" r="2" fill="white" />
+                  <path
+                    d="M13 10v6c0 .7.9 1.2 1.5.8l5-3c.6-.4.6-1.2 0-1.6l-5-3c-.6-.5-1.5 0-1.5.8"
+                    fill="white"
+                  />
+                </svg>
+              </Link>
+
+              <Link
+                href="/live"
+                className="min-w-[160px] px-4 py-2 text-lg md:min-w-[250px] md:px-8 md:py-3 md:text-2xl
+               bg-[#FEBE01] hover:bg-[#e5aa00] text-black rounded-sm font-semibold 
+               shadow-md hover:shadow-lg transition-transform duration-300 
+               cursor-pointer flex items-center justify-center gap-2 hover:scale-105"
+              >
+                คอร์สสอนสด Live
+                <svg
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  className="w-5 h-5 md:w-8 md:h-8"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path fill="none" d="M0 0h24v24H0z" />
+                  <path
+                    d="M16 4a1 1 0 0 1 1 1v4.2l5.213-3.65a.5.5 0 0 1 .787.41v12.08a.5.5 0 0 1-.787.41L17 14.8V19a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zm-1 2H3v12h12zM7.4 8.829a.4.4 0 0 1 .215.062l4.355 2.772a.4.4 0 0 1 0 .674L7.615 15.11A.4.4 0 0 1 7 14.77V9.23a.4.4 0 0 1 .4-.4zM21 8.84l-4 2.8v.718l4 2.8z"
+                    fill="red"
+                  />
+                </svg>
+              </Link>
+            </div>
+
+
+
+
+
+
           </div>
         </div>
       </div>

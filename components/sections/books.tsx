@@ -15,7 +15,7 @@ export default function Books() {
       <div className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8">
     
         <div className="text-center mb-8 lg:mb-12"> 
-          <h2 className="text-2xl lg:text-4xl font-bold text-gray-900 mb-3 lg:mb-4 text-balance"> 
+          <h2 className="text-2xl lg:text-4xl font-bold text-gray-900 mb-3 lg:mb-4 text-balance bg-[#ffbf00] px-8 py-4 w-fit mx-auto rounded-full shadow-sm"> 
             หนังสือของเรา
           </h2>
           <p className="text-base lg:text-lg text-gray-600 max-w-2xl mx-auto text-pretty"> 

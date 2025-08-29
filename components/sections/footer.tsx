@@ -130,7 +130,11 @@ export function Footer() {
 
             <div className="mt-8">
               <button className="w-full bg-yellow-400 hover:bg-yellow-500 text-white py-3 px-4 rounded-lg font-medium transition-colors duration-200 cursor-pointer hover:font-bold">
-                <Link href="mailto:Physicsptoey@hotmail.com">
+              <Link
+    href="https://line.me/ti/p/@csw9917j"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
                 ติดต่อเราเลย
                 </Link>
               </button>

@@ -1,9 +1,16 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { GeistSans } from "geist/font/sans"
 import { GeistMono } from "geist/font/mono"
+import { Sarabun } from "next/font/google"
 import "./globals.css"
 import { Navigation } from "@/components/navigation"
+
+const sarabun = Sarabun({
+  subsets: ["thai", "latin"],
+  weight: ["200", "300", "400", "500", "600", "700", "800"],
+  variable: "--font-sarabun",
+  display: "swap",
+})
 
 export const metadata: Metadata = {
   title: "ฟิสิกส์ครูพี่เต้ย - เรียนฟิสิกส์อย่างเป็นระบบกับฟิสิกส์พี่เต้ย",
@@ -22,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="th">
-      <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable} antialiased`}>
+      <body className={`font-sans ${sarabun.variable} ${GeistMono.variable} antialiased`}>
         <Navigation />
         <main className="pt-16 lg:pt-20">{children}</main>
       </body>

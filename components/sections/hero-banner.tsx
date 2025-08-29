@@ -40,7 +40,7 @@ export default function HeroBanner() {
               src={slide.image || "/placeholder.svg"}
               alt="Hero Banner"
               fill
-              className="object-cover"
+              className="object-cover rounded-lg"
               priority={index === 0}
             />
             <div className="absolute inset-0 bg-black/0" />
