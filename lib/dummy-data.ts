@@ -1,5 +1,3 @@
-// Dummy data for API preparation
-
 export const bannerSlides = [
   {
     id: 1,
@@ -178,14 +176,14 @@ export const teachingVideos = [
   {
     id: 1,
     title: "การเคลื่อนที่แบบตรง",
-    youtubeId: "09W1t7nVOm4", // Replace with actual YouTube video ID
+    youtubeId: "09W1t7nVOm4", 
     thumbnail: "/placeholder.svg?height=200&width=350",
     description: "เรียนรู้เรื่องการเคลื่อนที่แบบตรงอย่างละเอียด",
   },
   {
     id: 2,
     title: "แรงและการเคลื่อนที่",
-    youtubeId: "GjZZf6UtVjc", // Replace with actual YouTube video ID
+    youtubeId: "GjZZf6UtVjc", 
     thumbnail: "/placeholder.svg?height=200&width=350",
     description: "ทำความเข้าใจเรื่องแรงและการเคลื่อนที่",
   },
@@ -421,7 +419,7 @@ export const examCategories = [
 ]
 
 export const examBank = [
-  // PAT2 Exams
+ 
   {
     id: 1,
     title: "ข้อสอบ PAT2 วิชา ฟิสิกส์ ปี 2552",
@@ -512,7 +510,7 @@ export const examBank = [
     pdfUrl: "/exams/pat2-physics-2560.pdf",
     downloadUrl: "/downloads/pat2-physics-2560.pdf",
   },
-  // A LEVEL Exams
+ 
   {
     id: 10,
     title: "ข้อสอบ A LEVEL ปี 2555",
@@ -643,7 +641,7 @@ export const examBank = [
     pdfUrl: "/exams/alevel-physics-2567.pdf",
     downloadUrl: "/downloads/alevel-physics-2567.pdf",
   },
-  // Physics Olympiad Exams
+ 
   {
     id: 23,
     title: "ข้อสอบสอวน.ฟิสิกส์ คัดค่าย 1 ปี 2560",
@@ -674,7 +672,7 @@ export const examBank = [
     pdfUrl: "/exams/physics-olympiad-2562.pdf",
     downloadUrl: "/downloads/physics-olympiad-2562.pdf",
   },
-  // TPAT3 Exams
+
   {
     id: 26,
     title: "ข้อสอบความถนัดวิศวกรรม (TPAT3) ปี 2557",

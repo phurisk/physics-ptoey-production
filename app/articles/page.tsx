@@ -1,8 +1,9 @@
-// app/articles/page.tsx
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
 import { redirect } from "next/navigation"
-import { Calendar, Clock, ArrowRight } from "lucide-react"
+import { Calendar, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { articles } from "@/lib/dummy-data"

@@ -26,7 +26,7 @@ export default function AboutTeacher() {
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
 
-          {/* ข้อมูลชื่อ + title */}
+      
           <div className="order-1 lg:order-2 lg:col-span-1 space-y-4">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 text-balance">{teacherInfo.name}</h2>
             <div className="space-y-2">
@@ -35,7 +35,7 @@ export default function AboutTeacher() {
             </div>
           </div>
 
-          {/* คอลัมน์รูปครู */}
+        
           <div className="order-2 lg:order-1 lg:row-span-2">
             <div className="relative">
               <div className="aspect-[4/5] relative overflow-hidden rounded-2xl shadow-2xl">
@@ -51,7 +51,7 @@ export default function AboutTeacher() {
               <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-yellow-400 rounded-full opacity-30"></div>
             </div>
 
-            {/* ปุ่มย้ายมาใต้รูป สำหรับ md+ */}
+           
             <div className="mt-14 hidden md:flex flex-row gap-3 justify-start flex-nowrap mb-10 ">
               <Link
                 href="/courses"
@@ -108,9 +108,9 @@ export default function AboutTeacher() {
             </div>
           </div>
 
-          {/* คอลัมน์ขวา */}
+       
           <div className="order-3 lg:order-3 lg:col-span-1 space-y-8">
-            {/* Achievements */}
+           
             <div className="space-y-6">
               <h4 className="text-xl font-semibold text-gray-900">ประวัติ / ประสบการณ์การสอน</h4>
               <div className="space-y-3">
@@ -152,7 +152,7 @@ export default function AboutTeacher() {
               </CardContent>
             </Card>
 
-            {/* ปุ่มเดิม — ใช้เฉพาะ mobile */}
+           
             <div className="mt-6 flex flex-row gap-3 justify-center flex-nowrap md:hidden">
               <Link
                 href="/courses"

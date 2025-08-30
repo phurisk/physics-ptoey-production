@@ -263,28 +263,44 @@ export default function AboutPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="py-16 px-4 bg-gradient-to-r from-yellow-400 to-yellow-500"
+
+          className="py-6 sm:py-8 md:py-12 lg:py-16 px-3 sm:px-4 md:px-6 bg-gradient-to-r from-yellow-400 to-yellow-500"
         >
           <div className="max-w-7xl mx-auto">
-            <div className="grid md:grid-cols-3 gap-8 text-center">
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 lg:gap-10 text-center">
+
+
               <div className="text-white">
-                <Users className="h-12 w-12 mx-auto mb-4" />
-                <h3 className="text-3xl font-bold mb-2">1000+</h3>
-                <p className="text-xl">นักเรียนที่ประสบความสำเร็จ</p>
+                <Users className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 mx-auto mb-2 sm:mb-3 md:mb-4" />
+                <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-1 sm:mb-2">1000+</h3>
+                <p className="text-sm sm:text-base md:text-lg leading-snug">
+                  นักเรียนที่ประสบความสำเร็จ
+                </p>
               </div>
+
+
               <div className="text-white">
-                <BookOpen className="h-12 w-12 mx-auto mb-4" />
-                <h3 className="text-3xl font-bold mb-2">15+</h3>
-                <p className="text-xl">ปีของประสบการณ์การสอน</p>
+                <BookOpen className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 mx-auto mb-2 sm:mb-3 md:mb-4" />
+                <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-1 sm:mb-2">15+</h3>
+                <p className="text-sm sm:text-base md:text-lg leading-snug">
+                  ปีของประสบการณ์การสอน
+                </p>
               </div>
+
+
               <div className="text-white">
-                <Award className="h-12 w-12 mx-auto mb-4" />
-                <h3 className="text-3xl font-bold mb-2">50+</h3>
-                <p className="text-xl">รางวัลและความสำเร็จ</p>
+                <Award className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 mx-auto mb-2 sm:mb-3 md:mb-4" />
+                <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-1 sm:mb-2">50+</h3>
+                <p className="text-sm sm:text-base md:text-lg leading-snug">
+                  รางวัลและความสำเร็จ
+                </p>
               </div>
+
             </div>
           </div>
         </motion.section>
+
       </main>
 
       <Footer />

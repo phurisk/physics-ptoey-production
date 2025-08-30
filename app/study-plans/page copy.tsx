@@ -5,7 +5,7 @@ import { Footer } from "@/components/sections/footer"
 import { motion } from "framer-motion"
 import Image from "next/image"
 
-// Dummy data for study plans
+
 const studyPlans = [
   {
     id: 1,
@@ -62,7 +62,7 @@ export default function StudyPlansPage() {
     <>
       <Navigation />
       <main className="min-h-screen bg-white">
-        {/* Header Section */}
+       
         <motion.section
           className="py-16 bg-gradient-to-r from-blue-50 to-white"
           initial={{ opacity: 0, y: 20 }}
@@ -77,10 +77,9 @@ export default function StudyPlansPage() {
           </div>
         </motion.section>
 
-        {/* Gallery Section */}
+      
         <section className="py-16">
           <div className="container mx-auto px-4">
-            {/* Responsive Masonry Grid Layout */}
             <div className="flex flex-col items-center space-y-8 max-w-4xl mx-auto">
               {studyPlans.map((plan, index) => (
                 <motion.div
@@ -104,7 +103,7 @@ export default function StudyPlansPage() {
                       className="object-cover"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 60vw"
                     />
-                    {/* Overlay */}
+                 
                     <div className="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-all duration-300 flex items-end">
                       <div className="p-4 text-white opacity-0 hover:opacity-100 transition-opacity duration-300">
                         <h3 className="font-semibold text-sm md:text-base">{plan.title}</h3>
@@ -117,7 +116,7 @@ export default function StudyPlansPage() {
           </div>
         </section>
 
-        {/* Features Section */}
+       
         <motion.section
           className="py-16 bg-gray-50"
           initial={{ opacity: 0 }}
@@ -155,7 +154,7 @@ export default function StudyPlansPage() {
           </div>
         </motion.section>
 
-        {/* Call to Action */}
+      
         <motion.section
           className="py-16 bg-yellow-400"
           initial={{ opacity: 0 }}
