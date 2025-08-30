@@ -25,7 +25,7 @@ export function Footer() {
     { platform: "TikTok", username: "@physicsptoey", url: "https://tiktok.com/@physicsptoey" },
     { platform: "Instagram", username: "@physics.ptoey", url: "https://instagram.com/physics.ptoey" },
     { platform: "Facebook", username: "@physicsptoey", url: "https://facebook.com/physicsptoey" },
-    { platform: "Line", username: "@csw9917j", url: "https://line.me/ti/p/@csw9917j" },
+    { platform: "Line", username: "@physics.ptoey", url: "https://line.me/ti/p/@physics.ptoey" },
   ]
 
   const contactInfo = {
@@ -56,7 +56,7 @@ export function Footer() {
               </div>
             </div>
             <p className="text-gray-300 mb-6 leading-relaxed max-w-md">
-              {contactInfo.schoolName} {contactInfo.subtitle} พร้อมให้บริการการเรียนการสอนฟิสิกส์ที่มีคุณภาพ
+              {contactInfo.schoolName} <br /> {contactInfo.subtitle} <br /> พร้อมให้บริการการเรียนการสอนฟิสิกส์ที่มีคุณภาพ
               เพื่อให้นักเรียนประสบความสำเร็จในการศึกษา
             </p>
 

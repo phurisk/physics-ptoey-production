@@ -26,7 +26,7 @@ export default function HeroBanner() {
   }
 
   return (
-    <section className="relative w-full aspect-[3840/1799] overflow-hidden">
+    <section className="relative w-full aspect-[3840/1799] overflow-hidden px-2 py-1 md:py-2 md:px-8">
     
       <div className="relative w-full h-full">
         {bannerSlides.map((slide, index) => (
@@ -40,7 +40,7 @@ export default function HeroBanner() {
               src={slide.image || "/placeholder.svg"}
               alt="Hero Banner"
               fill
-              className="object-cover rounded-lg"
+              className="object-cover rounded-xl"
               priority={index === 0}
             />
             <div className="absolute inset-0 bg-black/0" />
@@ -50,10 +50,10 @@ export default function HeroBanner() {
       </div>
 
    
-      <Button
+      {/* <Button
         variant="ghost"
         size="sm"
-        className="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:bg-white/20 p-2"
+        className="absolute left-4 top-1/2 -translate-y-1/2 text-black hover:bg-black/20 p-2"
         onClick={prevSlide}
       >
         <ChevronLeft className="h-6 w-6" />
@@ -61,11 +61,11 @@ export default function HeroBanner() {
       <Button
         variant="ghost"
         size="sm"
-        className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:bg-white/20 p-2"
+        className="absolute right-4 top-1/2 -translate-y-1/2 text-black hover:bg-black/20 p-2"
         onClick={nextSlide}
       >
         <ChevronRight className="h-6 w-6" />
-      </Button>
+      </Button> */}
 
      
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
@@ -73,7 +73,7 @@ export default function HeroBanner() {
           <button
             key={index}
             className={`w-3 h-3 rounded-full transition-colors duration-200 ${
-              index === currentSlide ? "bg-yellow-400" : "bg-white/50"
+              index === currentSlide ? "bg-yellow-400" : "bg-white/80"
             }`}
             onClick={() => setCurrentSlide(index)}
           />

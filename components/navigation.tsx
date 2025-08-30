@@ -56,7 +56,7 @@ export function Navigation() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`px-4 py-2 text-lg font-medium transition-colors duration-200 
+                  className={`px-4 py-2 text-lg md:text-sm xl:text-lg font-medium transition-colors duration-200 
                     ${
                       pathname === item.href
                         ? "text-[#004B7D] border-b-2 border-[#004B7D]"
