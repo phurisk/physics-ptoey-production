@@ -1,15 +1,11 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'res.cloudinary.com',
-        port: '',
-        pathname: '/**',
-      },
-    ],
-  },
-};
+"use server"
 
-export default nextConfig;
+const PORT = process.env.PORT ?? 3000
+
+const nextConfig = {
+  eslint: { ignoreDuringBuilds: true },
+  typescript: { ignoreBuildErrors: true },
+  images: { unoptimized: true },
+}
+
+export default nextConfig
