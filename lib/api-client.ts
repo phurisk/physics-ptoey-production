@@ -1,4 +1,4 @@
-// Centralized API client helpers for public endpoints
+
 export type ApiResponse<T> = {
   success: boolean
   data?: T
@@ -6,7 +6,7 @@ export type ApiResponse<T> = {
   pagination?: any
 }
 
-// Resolve base URL for server-side fetches to API routes
+
 function getApiBase() {
   if (typeof window === 'undefined') {
     const base = process.env.NEXT_PUBLIC_APP_URL || process.env.NEXTAUTH_URL || 'http://localhost:3000'
@@ -15,7 +15,7 @@ function getApiBase() {
   return ''
 }
 
-// Courses
+
 export type PublicCourse = {
   id: string
   title: string
@@ -46,7 +46,7 @@ export async function getCourse(id: string): Promise<PublicCourse> {
   return json.data
 }
 
-// Ebooks
+
 export type PublicEbook = {
   id: string
   title: string
@@ -256,7 +256,7 @@ export async function getPostTypes(): Promise<PublicPostType[]> {
   return json.data
 }
 
-// Convenience wrapper for homepage articles section
+
 export async function getArticlesPreview(): Promise<PublicPost[]> {
   return getPosts({ postType: 'บทความ', limit: 3 })
 }

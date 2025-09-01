@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 import { getToken } from 'next-auth/jwt'
 
-// Paths protected for admin only
+
 const ADMIN_PAGE_PREFIX = '/admin'
 const ADMIN_API_PREFIX = '/api/admin'
 
@@ -16,14 +16,14 @@ export async function middleware(req: NextRequest) {
     return NextResponse.next()
   }
 
-  // Read NextAuth JWT without cookies parsing on edge
+
   const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET }) as (null | { role?: string })
   const role = token?.role
   const isAdmin = role === 'ADMIN' || role === 'admin'
 
   if (isAdmin) return NextResponse.next()
 
-  // Not authorized
+
   if (isAdminApi) {
     return new NextResponse(
       JSON.stringify({ success: false, error: 'Unauthorized (admin only)' }),
@@ -31,7 +31,7 @@ export async function middleware(req: NextRequest) {
     )
   }
 
-  // For pages, redirect to home or login
+
   const url = req.nextUrl.clone()
   url.pathname = '/'
   url.searchParams.set('error', 'admin_only')

@@ -33,7 +33,7 @@ export default function ExamBankPage() {
   const [selectedExamDetail, setSelectedExamDetail] = useState<(PublicExam & { files: PublicExamFile[] }) | null>(null)
   const [detailLoading, setDetailLoading] = useState(false)
 
-  // Fetch categories once
+
   useEffect(() => {
     let active = true
     ;(async () => {
@@ -41,14 +41,14 @@ export default function ExamBankPage() {
         const cats = await getExamCategories(false)
         if (active) setCategories(cats)
       } catch (e: any) {
-        // non-blocking
+        
         console.error(e)
       }
     })()
     return () => { active = false }
   }, [])
 
-  // Fetch exams when filters change
+
   useEffect(() => {
     let active = true
     setLoading(true)
@@ -74,7 +74,7 @@ export default function ExamBankPage() {
     return () => { active = false }
   }, [page, limit, searchTerm, selectedCategory, reloadTick])
 
-  // Years derived from exam createdAt
+ 
   const availableYears = useMemo(() => {
     const years = exams
       .map(e => e.createdAt ? new Date(e.createdAt).getFullYear() : undefined)

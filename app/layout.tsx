@@ -14,7 +14,7 @@ const sarabun = Sarabun({
   preload: false,
 })
 
-// Use Geist Mono without preloading to avoid unused-preload warnings
+
 const GeistMono = localFont({
   src: "../node_modules/geist/dist/fonts/geist-mono/GeistMono-Variable.woff2",
   variable: "--font-geist-mono",

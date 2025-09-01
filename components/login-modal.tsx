@@ -23,11 +23,11 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
   const [error, setError] = useState<string>("")
   const [success, setSuccess] = useState<string>("")
 
-  // Login form state
+
   const [loginEmail, setLoginEmail] = useState("")
   const [loginPassword, setLoginPassword] = useState("")
 
-  // Register form state
+
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -62,7 +62,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
     setSuccess("")
     try {
       setLoading("login")
-      // 1) Call our login API to validate and get message
+     
       const res = await fetch("/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -74,10 +74,10 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
         return
       }
 
-      // Show success message briefly
+     
       setSuccess(data?.message || "เข้าสู่ระบบสำเร็จ")
 
-      // 2) Establish session via NextAuth credentials (no redirect)
+     
       const result = await signIn("credentials", {
         email: loginEmail,
         password: loginPassword,
@@ -90,7 +90,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
         return
       }
 
-      // Navigate to dashboard and close modal
+    
       router.push("/dashboard")
       onClose()
     } catch (err) {
@@ -118,7 +118,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
         return
       }
       setSuccess("สมัครสมาชิกสำเร็จ กรุณาเข้าสู่ระบบ")
-      // เติมอีเมลไปที่ฟอร์มล็อกอินเพื่อความสะดวก
+     
       setLoginEmail(email)
       setTab("login")
     } catch (err) {

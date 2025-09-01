@@ -161,7 +161,7 @@ export default function CoursesPage() {
                       </div>
 
                  
-                      {/* Rating not available from API yet */}
+                  
 
                
                       <div className="flex items-center gap-2 mb-6">

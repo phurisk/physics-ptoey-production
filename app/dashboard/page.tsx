@@ -12,7 +12,7 @@ async function getData(): Promise<{ session: SessionWithId | null; orders: any[]
   if (!session?.user?.id) return { session, orders: [] as any[] }
 
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || ""}/api/orders?userId=${session.user.id}`, {
-    // In App Router, fetch from relative path on server is fine
+  
     cache: "no-store",
   }).catch(() => null)
 
@@ -30,7 +30,7 @@ export default async function DashboardPage() {
   const totalSpent = orders
     .filter((o) => o.status === "COMPLETED")
     .reduce((sum, o) => sum + (o.total || 0), 0)
-  const purchasedItems = completedOrders // treat completed orders as purchased items count
+  const purchasedItems = completedOrders 
 
   const latest = orders.slice(0, 5)
 
