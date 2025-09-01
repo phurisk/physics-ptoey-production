@@ -1,6 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { GeistMono } from "geist/font/mono"
+import localFont from "next/font/local"
 import { Sarabun } from "next/font/google"
 import "./globals.css"
 import { Navigation } from "@/components/navigation"
@@ -11,6 +11,16 @@ const sarabun = Sarabun({
   weight: ["200", "300", "400", "500", "600", "700", "800"],
   variable: "--font-sarabun",
   display: "swap",
+  preload: false,
+})
+
+// Use Geist Mono without preloading to avoid unused-preload warnings
+const GeistMono = localFont({
+  src: "../node_modules/geist/dist/fonts/geist-mono/GeistMono-Variable.woff2",
+  variable: "--font-geist-mono",
+  weight: "100 900",
+  display: "swap",
+  preload: false,
 })
 
 export const metadata: Metadata = {
@@ -19,7 +29,7 @@ export const metadata: Metadata = {
   keywords: "ฟิสิกส์, กวดวิชา, ครูพี่เต้ย, เรียนฟิสิกส์, GAT, PAT, ฟิสิกส์ม.ปลาย",
   generator: "physics-ptoey.app",
   icons: {
-    icon: "/new-logo.png",
+    icon: "/images/new-logo.png",
   },
 }
 

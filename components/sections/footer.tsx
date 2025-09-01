@@ -48,7 +48,7 @@ export function Footer() {
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-2 mb-6">
               <div className="w-12 h-12 rounded-lg flex items-center justify-center">
-                <img src="/new-logo.png" alt="Logo" className="w-full h-full" />
+                <img src="/images/new-logo.png" alt="Logo" className="w-full h-full" />
               </div>
               <div>
                 <h3 className="text-xl font-bold">ฟิสิกส์พี่เต้ย</h3>

@@ -59,7 +59,7 @@ export function Navigation() {
           <div className="flex justify-between items-center h-16 lg:h-20">
       
             <Link href="/" className="flex items-center pl-2">
-              <img src="images/new-logo.png" alt="Logo" className="h-16 lg:h-20" />
+              <img src="/images/new-logo.png" alt="Logo" className="h-16 lg:h-20" />
             </Link>
 
       

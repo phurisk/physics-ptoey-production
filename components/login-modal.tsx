@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -16,6 +17,7 @@ interface LoginModalProps {
 }
 
 export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
+  const router = useRouter()
   const [loading, setLoading] = useState<"line" | "google" | "login" | "register" | null>(null)
   const [tab, setTab] = useState<"login" | "register">("login")
   const [error, setError] = useState<string>("")
@@ -60,13 +62,37 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
     setSuccess("")
     try {
       setLoading("login")
+      // 1) Call our login API to validate and get message
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: loginEmail, password: loginPassword }),
+      })
+      const data = await res.json().catch(() => null)
+      if (!res.ok || !data?.success) {
+        setError(data?.error || "เข้าสู่ระบบไม่สำเร็จ")
+        return
+      }
+
+      // Show success message briefly
+      setSuccess(data?.message || "เข้าสู่ระบบสำเร็จ")
+
+      // 2) Establish session via NextAuth credentials (no redirect)
       const result = await signIn("credentials", {
         email: loginEmail,
         password: loginPassword,
-        callbackUrl: "/dashboard",
-        redirect: true,
+        redirect: false,
       })
-      // If redirect:false was used, we would handle errors here.
+
+      if (result?.error) {
+        setError("เข้าสู่ระบบไม่สำเร็จ กรุณาลองใหม่")
+        setSuccess("")
+        return
+      }
+
+      // Navigate to dashboard and close modal
+      router.push("/dashboard")
+      onClose()
     } catch (err) {
       setError("เกิดข้อผิดพลาดในการเชื่อมต่อเซิร์ฟเวอร์")
     } finally {

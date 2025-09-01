@@ -1,11 +1,34 @@
+"use client"
+
+import { useEffect, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Calendar, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { articles } from "@/lib/dummy-data"
+import { getPosts, PublicPost } from "@/lib/api-client"
 
 export default function Articles() {
+  const [posts, setPosts] = useState<PublicPost[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    let mounted = true
+    ;(async () => {
+      try {
+        const data = await getPosts({ postType: "บทความ", limit: 3 })
+        if (mounted) setPosts(data)
+      } catch (e) {
+        console.error("Failed to load articles", e)
+      } finally {
+        if (mounted) setLoading(false)
+      }
+    })()
+    return () => {
+      mounted = false
+    }
+  }, [])
+
   return (
     <section className="py-16 lg:py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
@@ -19,18 +42,32 @@ export default function Articles() {
 
       
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8  ">
-          {articles.map((article) => (
+          {loading ? (
+            Array.from({ length: 3 }).map((_, idx) => (
+              <Card key={idx} className="overflow-hidden bg-white pt-0">
+                <CardContent className="p-0">
+                  <div className="aspect-[16/7.5] bg-gray-100 animate-pulse" />
+                  <div className="p-6">
+                    <div className="h-4 w-40 bg-gray-100 rounded animate-pulse mb-3" />
+                    <div className="h-6 w-3/4 bg-gray-100 rounded animate-pulse mb-3" />
+                    <div className="h-4 w-full bg-gray-100 rounded animate-pulse mb-6" />
+                  </div>
+                </CardContent>
+              </Card>
+            ))
+          ) : (
+          posts.map((post) => (
             <Card
-              key={article.id}
+              key={post.id}
               className="group hover:shadow-xl transition-all duration-300 overflow-hidden bg-white pt-0"
             >
               <CardContent className="p-0">
-             
-                <Link href={`/articles/${article.slug}`}>
+              
+                <Link href={`/articles/${post.slug ?? post.id}`}>
                   <div className="aspect-[16/7.5] relative overflow-hidden cursor-pointer">
                     <Image
-                      src={article.image || "/placeholder.svg"}
-                      alt={article.title}
+                      src={post.imageUrl || "/placeholder.svg"}
+                      alt={post.title}
                       fill
                       className="object-contain  group-hover:scale-105 transition-transform duration-300"
                     />
@@ -44,7 +81,7 @@ export default function Articles() {
                   <div className="flex items-center text-sm text-gray-500 mb-3 space-x-4">
                     <div className="flex items-center">
                       <Calendar className="w-4 h-4 mr-1" />
-                      {new Date(article.date).toLocaleDateString("th-TH", {
+                      {new Date(post.publishedAt || Date.now()).toLocaleDateString("th-TH", {
                         year: "numeric",
                         month: "long",
                         day: "numeric",
@@ -53,26 +90,27 @@ export default function Articles() {
                   </div>
 
               
-                  <Link href={`/articles/${article.slug}`}>
+                  <Link href={`/articles/${post.slug ?? post.id}`}>
                     <h3 className="text-xl font-semibold text-gray-900 mb-3 text-balance group-hover:text-yellow-600 transition-colors duration-200 cursor-pointer">
-                      {article.title}
+                      {post.title}
                     </h3>
                   </Link>
 
                
-                  <p className="text-gray-600 mb-6 text-pretty leading-relaxed">{article.excerpt}</p>
+                  <p className="text-gray-600 mb-6 text-pretty leading-relaxed">{post.excerpt || ''}</p>
 
                
-                  <Button asChild variant="ghost" className="group/btn p-0 h-auto text-yellow-600 hover:text-yellow-700">
-                    <Link href={`/articles/${article.slug}`}>
-                      อ่านต่อ
-                      <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform duration-200" />
-                    </Link>
-                  </Button>
+                    <Button asChild variant="ghost" className="group/btn p-0 h-auto text-yellow-600 hover:text-yellow-700">
+                      <Link href={`/articles/${post.slug ?? post.id}`}>
+                        อ่านต่อ
+                        <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform duration-200" />
+                      </Link>
+                    </Button>
                 </div>
               </CardContent>
             </Card>
-          ))}
+          ))
+          )}
         </div>
 
      

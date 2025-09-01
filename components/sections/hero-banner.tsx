@@ -41,7 +41,7 @@ export default function HeroBanner() {
               alt="Hero Banner"
               fill
               className="object-cover rounded-xl"
-              priority={index === 0}
+              loading={index === 0 ? "eager" : undefined}
             />
             <div className="absolute inset-0 bg-black/0" />
 

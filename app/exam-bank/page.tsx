@@ -129,6 +129,19 @@ export default function ExamBankPage() {
     a.remove()
   }
 
+  const formatSize = (bytes?: number | null) => {
+    if (bytes == null) return null
+    const units = ['B', 'KB', 'MB', 'GB']
+    let val = bytes
+    let i = 0
+    while (val >= 1024 && i < units.length - 1) {
+      val /= 1024
+      i++
+    }
+    const num = val % 1 === 0 ? val.toString() : val.toFixed(1)
+    return `${num} ${units[i]}`
+  }
+
   return (
     <>
 
@@ -292,7 +305,7 @@ export default function ExamBankPage() {
           )}
 
           <Dialog open={!!selectedExamId} onOpenChange={closeExamDetail}>
-            <DialogContent className="sm:max-w-md">
+            <DialogContent className="sm:max-w-lg md:max-w-xl">
               <DialogHeader>
                 <DialogTitle className="text-xl font-bold text-gray-900">
                   {selectedExamDetail?.title || 'รายละเอียดข้อสอบ'}
@@ -315,23 +328,29 @@ export default function ExamBankPage() {
                       </div>
                     </div>
                     {(selectedExamDetail.files?.length ?? 0) > 0 ? (
-                      <div className="space-y-2">
-                        {selectedExamDetail.files.map((f) => (
-                          <div key={f.id} className="flex items-center justify-between gap-3 border rounded-md p-2">
-                            <div className="min-w-0">
-                              <div className="text-sm font-medium truncate">{f.fileName}</div>
-                              <div className="text-xs text-gray-500">{f.fileType || 'ไฟล์'}</div>
+                      <div className="space-y-3">
+                        {selectedExamDetail.files.map((f) => {
+                          const size = formatSize(f.fileSize)
+                          return (
+                            <div key={f.id} className="rounded-lg border p-4 bg-white hover:shadow-sm transition">
+                              <div className="flex items-start gap-3">
+                                <FileText className="h-6 w-6 text-yellow-600 mt-0.5 flex-shrink-0" />
+                                <div className="min-w-0">
+                                  <div className="text-sm font-semibold break-words">{f.fileName}</div>
+                                  <div className="text-xs text-gray-500">{f.fileType || 'ไฟล์'}{size ? ` • ${size}` : ''}</div>
+                                </div>
+                              </div>
+                              <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                <Button variant="outline" onClick={() => handleView(f)} className="gap-1 w-full">
+                                  <Eye className="h-4 w-4" /> ดู
+                                </Button>
+                                <Button onClick={() => handleDownload(f)} className="gap-1 w-full">
+                                  <Download className="h-4 w-4" /> ดาวน์โหลด
+                                </Button>
+                              </div>
                             </div>
-                            <div className="flex gap-2">
-                              <Button variant="outline" onClick={() => handleView(f)} className="gap-1">
-                                <Eye className="h-4 w-4" /> ดู
-                              </Button>
-                              <Button onClick={() => handleDownload(f)} className="gap-1">
-                                <Download className="h-4 w-4" /> ดาวน์โหลด
-                              </Button>
-                            </div>
-                          </div>
-                        ))}
+                          )
+                        })}
                       </div>
                     ) : (
                       <div className="text-sm text-gray-500">ยังไม่มีไฟล์สำหรับข้อสอบนี้</div>

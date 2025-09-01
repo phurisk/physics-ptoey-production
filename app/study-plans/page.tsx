@@ -147,7 +147,7 @@ function ElegantTile({
           fill
           sizes="100vw"
           className="object-cover"
-          priority={index < 1}
+          loading={index < 1 ? "eager" : undefined}
         />
       </TileFrame>
     </motion.figure>

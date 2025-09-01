@@ -6,6 +6,15 @@ export type ApiResponse<T> = {
   pagination?: any
 }
 
+// Resolve base URL for server-side fetches to API routes
+function getApiBase() {
+  if (typeof window === 'undefined') {
+    const base = process.env.NEXT_PUBLIC_APP_URL || process.env.NEXTAUTH_URL || 'http://localhost:3000'
+    return base.replace(/\/$/, '')
+  }
+  return ''
+}
+
 // Courses
 export type PublicCourse = {
   id: string
@@ -189,4 +198,65 @@ export async function getExamDetail(id: string): Promise<PublicExam & { files: P
   const json: ApiResponse<PublicExam & { files: PublicExamFile[] }> = await res.json()
   if (!json.success || !json.data) throw new Error(json.error || 'Failed to fetch exam detail')
   return json.data
+}
+
+// Posts
+export type PublicPostType = {
+  id: string
+  name: string
+  description?: string | null
+  _count?: { posts: number }
+}
+
+export type PublicPost = {
+  id: string
+  title: string
+  slug: string
+  excerpt?: string | null
+  imageUrl?: string | null
+  imageUrlMobileMode?: string | null
+  isFeatured?: boolean
+  isActive?: boolean
+  publishedAt?: string | null
+  createdAt?: string | null
+  author?: { id: string; name: string | null; email: string | null } | null
+  postType?: { id: string; name: string; description?: string | null } | null
+}
+
+export async function getPosts(params?: {
+  postType?: string
+  limit?: number
+  featured?: boolean
+}): Promise<PublicPost[]> {
+  const qs = new URLSearchParams()
+  if (params?.postType) qs.set('postType', params.postType)
+  if (params?.limit) qs.set('limit', String(params.limit))
+  if (params?.featured) qs.set('featured', 'true')
+
+  const res = await fetch(`${getApiBase()}/api/posts${qs.toString() ? `?${qs.toString()}` : ''}`, { cache: 'no-store' })
+  if (!res.ok) throw new Error('Failed to fetch posts')
+  const json: ApiResponse<PublicPost[]> = await res.json()
+  if (!json.success || !json.data) throw new Error(json.error || 'Failed to fetch posts')
+  return json.data
+}
+
+export async function getPost(slugOrId: string): Promise<PublicPost> {
+  const res = await fetch(`${getApiBase()}/api/posts/${encodeURIComponent(slugOrId)}`, { cache: 'no-store' })
+  if (!res.ok) throw new Error('Failed to fetch post')
+  const json: ApiResponse<PublicPost> = await res.json()
+  if (!json.success || !json.data) throw new Error(json.error || 'Failed to fetch post')
+  return json.data
+}
+
+export async function getPostTypes(): Promise<PublicPostType[]> {
+  const res = await fetch(`${getApiBase()}/api/post-types`, { cache: 'no-store' })
+  if (!res.ok) throw new Error('Failed to fetch post types')
+  const json: ApiResponse<PublicPostType[]> = await res.json()
+  if (!json.success || !json.data) throw new Error(json.error || 'Failed to fetch post types')
+  return json.data
+}
+
+// Convenience wrapper for homepage articles section
+export async function getArticlesPreview(): Promise<PublicPost[]> {
+  return getPosts({ postType: 'บทความ', limit: 3 })
 }
