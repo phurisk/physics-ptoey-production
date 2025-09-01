@@ -79,7 +79,7 @@ export function Navigation() {
                 </Link>
               ))}
 
-              {/* Cart removed: no cart feature connected */}
+            
 
               {status === "loading" ? (
                 <div className="ml-2 h-8 w-8 rounded-full bg-muted animate-pulse" />

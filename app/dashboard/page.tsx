@@ -108,7 +108,7 @@ export default async function DashboardPage() {
               <Link href="/orders" className="w-full">
                 <div className="rounded-md border p-3 hover:bg-muted/50 transition">ประวัติคำสั่งซื้อ</div>
               </Link>
-              {/* Cart link removed: no cart feature */}
+            
               <Link href="/profile" className="w-full">
                 <div className="rounded-md border p-3 hover:bg-muted/50 transition">ข้อมูลส่วนตัว</div>
               </Link>

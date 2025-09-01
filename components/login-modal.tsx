@@ -169,7 +169,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
 
 
         <div className="px-6 pt-5 pb-6 space-y-4">
-          {/* Status messages */}
+         
           {error ? (
             <div className="text-sm text-red-600">{error}</div>
           ) : null}
@@ -177,7 +177,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
             <div className="text-sm text-green-600">{success}</div>
           ) : null}
 
-          {/* Tabs: Email login / Register */}
+          
           <Tabs value={tab} onValueChange={(v) => setTab(v as typeof tab)}>
             <TabsList className="grid w-full grid-cols-2">
               <TabsTrigger value="login">เข้าสู่ระบบ</TabsTrigger>

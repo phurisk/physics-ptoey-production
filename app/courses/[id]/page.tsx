@@ -150,7 +150,7 @@ export default function CourseDetailPage() {
               </Card>
             </motion.div>
 
-            {/* Sections removed: prerequisites, overview, rating (not available from API) */}
+           
           </div>
 
 
